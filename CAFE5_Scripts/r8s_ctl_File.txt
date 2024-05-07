@@ -1,0 +1,29 @@
+#NEXUS
+begin trees;
+tree nj_tree = [&R] (((lana:0.27196381,(pau.fa:0.26058891,bner.aa.fa:0.62580476):0.08850655):0.04196151,(nge.fa:0.30764459,(ctel.fa:0.28812272,eand:0.36984138):0.11207036):0.03599567):0.037178325,(((agran.aa.fa:0.12605176,hhan.fa:0.10571319):0.09899005,(chaetospfa:0.25803843,(ebab.pep.fa:0.13296900,nmeg.pep.fa:0.13696548):0.27074059):0.05080940):0.04391722,((npo.pep.fa:0.19986731,(esco:0.14320598,obim:0.16863029):0.14991165):0.11993841,((((pvul.fa:0.09256856,lgig:0.12118131):0.14998130,(csqu:0.17837821,hruf:0.15994625):0.05341805):0.02207018,(pcan:0.23479772,(acal.fa:0.11935903,(echl:0.16177155,(bgla:0.13449676,aimm:0.11674386):0.03298548):0.02459939):0.16714371):0.06489737):0.04724322,((pver:0.15254557,sdal:0.20454221):0.14257589,((pstr:0.20651224,(mmer:0.13340468,scon:0.14312679):0.10745571):0.06342233,((mphi:0.21222785,(cgig:0.16644058,pfuc:0.16203550):0.06120775):0.02647323,(sbro:0.16842306,(cfar:0.01700261,myes.fa:0.02364970):0.17451995):0.02741844):0.05046586):0.03103266):0.01546203):0.02378190):0.02273817):0.037178325);
+End;
+begin rates;
+blformat nsites=1226867 lengths=persite ultrametric=no;
+collapse;
+mrca ana.fa lana agran.aa.fa; #this is the LCA
+mrca moll agran.aa.fa esco; #have to define a linage and name it so this is so this is defining the most recent common ancestor of mollusca 
+mrca conch npo.pep.fa hruf;
+mrca dias sdal cfar;
+mrca autol pstr cfar;
+mrca ceph npo.pep.fa esco;
+mrca cole obim esco;
+mrca gast hruf pcan;
+mrca hcdiv pcan bgla;
+fixage taxon=ana.fa age=550; #have to fix on LCA 
+constrain taxon=moll min_age=530.7 max_age=538.8; #here is where you constrain the MRCAs you named above 
+constrain taxon=conch min_age=530.7 max_age=537.6; 
+constrain taxon=dias min_age=530.7 max_age=537.6;
+constrain taxon=autol min_age=477.08 max_age= 497.0;
+constrain taxon=ceph min_age=394.3 max_age=486.9;
+constrain taxon=cole min_age=246.7 max_age=359.3;
+constrain taxon=gast min_age=469.42 max_age=497.0;
+constrain taxon=hcdiv min_age=394.3 max_age=477.08;
+divtime method=pl algorithm=tn cvStart=0 cvInc=0.5 cvNum=8 crossv=yes; #this is what CAFE recommended so I stuck with it
+describe plot=chronogram;
+describe plot=tree_description;
+end;
