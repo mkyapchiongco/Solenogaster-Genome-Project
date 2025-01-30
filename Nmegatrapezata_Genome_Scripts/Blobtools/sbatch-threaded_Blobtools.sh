@@ -14,13 +14,11 @@
 module load bio/samtools/1.10
 module load bio/minimap2/2.10
 module load miniconda3/base
-#CANT HAVE PYTHON LOADED 
+
 
 #Input files used:
-GENOME=/grps2/kmk/Meghan/Neomenia_genome/2022-11-07_NEOM_YAHS/edited_out_JBAT.FINAL.fa
-HIF_READS=/grps2/kmk/Meghan/Neomenia_genome/2022-07-01_NEOM_AllHiFi_Hifiasm/NEOM_AllHiFi.fasta
-#/grps2/kmk/Meghan/Neomenia_genome/2022-11-07_NEOM_YAHS/ManualEdits_BUSCO_QUAST/busco_out/BUSCO/run_metazoa_odb10
-	#Above is path for used BUSCO inout
+GENOME=
+HIF_READS=
 
 conda activate /kmk/scripts/.blobtools2
 
